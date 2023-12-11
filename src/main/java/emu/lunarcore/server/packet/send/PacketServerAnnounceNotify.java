@@ -1,3 +1,4 @@
+/*
 package emu.lunarcore.server.packet.send;
 
 import emu.lunarcore.server.packet.BasePacket;
@@ -32,3 +33,73 @@ public class PacketServerAnnounceNotify extends BasePacket {
         this.setData(byteArray);
     }
 }
+*/
+
+
+package emu.lunarcore.server.packet.send;
+
+import emu.lunarcore.proto.ServerAnnounceNotifyOuterClass.ServerAnnounceNotify;
+import emu.lunarcore.proto.ServerAnnounceNotifyOuterClass.ServerAnnounceNotify.AnnounceData;
+import emu.lunarcore.server.packet.BasePacket;
+import emu.lunarcore.server.packet.CmdId;
+
+public class PacketServerAnnounceNotify extends BasePacket {
+    
+    public PacketServerAnnounceNotify() {
+        super(CmdId.ServerAnnounceNotify);
+
+        AnnounceData announceData = AnnounceData.newInstance()
+            .setBeginTime(0L)
+            .setEndTime(9999999999999L)
+            .setCountDownText("欢迎来到半夏公益服 本服依靠开源软件lunarcore 完全免费 请不要倒卖 || lunarcore 是一款免费软件。如果你花钱买了它，那你就被骗了！ || 半夏公益服官方一群154422757 qq频道号是bxserver114514 || 我们半夏公益服只有一个赞助渠道-爱发电 https://afdian.net/a/bxserver 且只能给服务器资金赞助 任何个人二维码的赞助都是假的 不要相信 || 部分圈钱服与我们公益服撞名 并窃取我们的劳动成果 注意甄别 半夏公益服纯免费 只要是以购买/赞助的名义诱导你付钱来给你任何虚拟物品的就是圈钱服 我们也从来不会去售卖任何虚拟物品 如:账号 权限 等 半夏公益服将一直致力于成为公益服的标杆")
+            .setCenterSystemFrequency(100)
+            .setCountDownFrequency(1)
+            .setIsCenterSystemLast5EveryMinutes(true)
+            .setConfigId(0);
+
+        var data = ServerAnnounceNotify.newInstance()
+            .addAnnounceDataList(announceData);
+
+        this.setData(data);
+    }
+}
+
+
+/* gc
+package emu.grasscutter.server.packet.send;
+
+import emu.grasscutter.net.packet.*;
+import emu.grasscutter.net.proto.*;
+import emu.grasscutter.utils.Utils;
+import java.util.List;
+
+public class PacketServerAnnounceNotify extends BasePacket {
+
+    public PacketServerAnnounceNotify(List<AnnounceDataOuterClass.AnnounceData> data) {
+        super(PacketOpcodes.ServerAnnounceNotify);
+
+        var proto = ServerAnnounceNotifyOuterClass.ServerAnnounceNotify.newBuilder();
+
+        proto.addAllAnnounceDataList(data);
+
+        this.setData(proto);
+    }
+
+    public PacketServerAnnounceNotify(String msg, int configId) {
+        super(PacketOpcodes.ServerAnnounceNotify);
+
+        var proto = ServerAnnounceNotifyOuterClass.ServerAnnounceNotify.newBuilder();
+
+        proto.addAnnounceDataList(
+                AnnounceDataOuterClass.AnnounceData.newBuilder()
+                        .setConfigId(configId)
+                        .setBeginTime(Utils.getCurrentSeconds() + 1)
+                        .setEndTime(Utils.getCurrentSeconds() + 2)
+                        .setCenterSystemText(msg)
+                        .setCenterSystemFrequency(1)
+                        .build());
+
+        this.setData(proto);
+    }
+}
+*/

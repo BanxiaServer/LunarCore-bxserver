@@ -51,7 +51,7 @@ public class ChatManager extends BasePlayerManager {
         }
 
         // Check if command
-        if (text.charAt(0) == '!' || text.charAt(0) == '/') {
+        if (text.charAt(0) == '!' || text.charAt(0) == '/' || text.charAt(0) == '、' || text.charAt(0) == '！') {
             LunarCore.getCommandManager().invoke(getPlayer(), text);
             return;
         }
