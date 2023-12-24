@@ -1,6 +1,7 @@
 package emu.lunarcore.server.packet.recv;
 
 import emu.lunarcore.server.game.GameSession;
+import emu.lunarcore.game.player.Player;
 import emu.lunarcore.server.packet.CmdId;
 import emu.lunarcore.server.packet.Opcodes;
 import emu.lunarcore.server.packet.PacketHandler;
@@ -12,15 +13,11 @@ public class HandlerSelectChatBubbleCsReq extends PacketHandler {
 
     @Override
     public void handle(GameSession session, byte[] data) throws Exception {
+
         var req = SelectChatBubbleCsReq.parseFrom(data);
+        Player player = session.getPlayer();
         
-        if (session.getPlayer().setChatBubble(req.getBubbleId())) {
-            // Success
-            session.send(new PacketSelectChatBubbleScRsp(req.getBubbleId()));
-        } else {
-            // Failure (player didnt have the chat bubble)
-            session.send(new PacketSelectChatBubbleScRsp());
-        }
+        session.send(new PacketSelectChatBubbleScRsp(player, req.getBubbleId()));
     }
     
 }

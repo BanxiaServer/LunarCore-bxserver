@@ -16,7 +16,7 @@ public class PacketGetPlayerBoardDataScRsp extends BasePacket {
                 .setCurrentHeadIconId(player.getHeadIcon())
                 .setSignature(player.getSignature());
         
-        for (int id : player.getUnlocks().getHeadIcons()) {
+        for (int id : player.getUnlockedHeadIcons()) {
             data.addUnlockedHeadIconList(HeadIcon.newInstance().setId(id));
         }
         
