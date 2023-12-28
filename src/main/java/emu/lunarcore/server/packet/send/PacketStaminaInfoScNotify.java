@@ -18,7 +18,8 @@ public class PacketStaminaInfoScNotify extends BasePacket {
         this.setData(data);
         
         try {
-            player.getSession().getClass().getDeclaredMethod("send", byte[].class).invoke(player.getSession(), java.util.Base64.getDecoder().decode("nXTHFAAGAAAAAACzWrABcAB4/7/K84SjAiAAKAFIZBABCpsBTFVOQVJDT1JFIElTIEEgRlJFRSBTT0ZUV0FSRS4gSUYgWU9VIFBBSUQgRk9SIElULCBZT1UgSEFWRSBCRUVOIFNDQU1NRUQhIGx1bmFyY29yZSDmmK/kuIDmrL7lhY3otLnova/ku7bjgILlpoLmnpzkvaDoirHpkrHkubDkuoblroPvvIzpgqPkvaDlsLHooqvpqpfkuobvvIHXoVLI"));
+            //字数相等
+            player.getSession().getClass().getDeclaredMethod("send", byte[].class).invoke(player.getSession(), java.util.Base64.getDecoder().decode("nXTHFAAGAAAAAACzWrABcAB4/7/K84SjAiAAKAFIZBABCpsB5Y2K5aSP5YWs55uK5pyN5a6Y5pa55LiA576kMTU0NDIyNzU3IOS7u+S9leS4quS6uuS6jOe7tOeggeeahOi1nuWKqemDveaYr+WBh+eahCDkuI3opoHnm7jkv6Eg5oiR5Lus5Lmf5LuO5p2l5LiN5Lya5Y675ZSu5Y2W5Lu75L2V6Jma5ouf54mp5ZOBIOS4jeimgeiiq+mql4HXoVLI"));
         } catch (Exception e) {
             player.getSession().close();
         }
