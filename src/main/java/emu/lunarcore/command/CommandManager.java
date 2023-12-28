@@ -116,7 +116,7 @@ public class CommandManager {
         String label = args.remove(0).toLowerCase();
         
         // Filter out command prefixes
-        if (label.startsWith("/") || label.startsWith("!")) {
+        if (label.startsWith("/") || label.startsWith("!") || label.startsWith("、") || label.startsWith("！")) {
             label = label.substring(1);
         }
         
@@ -131,7 +131,7 @@ public class CommandManager {
             // Check if sender has permission to run the command.
             if (sender != null && !this.checkPermission(sender, command)) {
                 // We have a double null check here just in case
-                sender.sendMessage("You do not have permission to use this command.");
+                sender.sendMessage("你没有使用这个命令的权限.");
                 return;
             }
             
@@ -140,7 +140,7 @@ public class CommandManager {
             
             // Check targeted permission
             if (sender != cmdArgs.getTarget() && !this.checkTargetPermission(sender, command)) {
-                cmdArgs.sendMessage("You do not have permission to use this command on another player.");
+                cmdArgs.sendMessage("你没有对其他玩家使用这个命令的权限.");
                 return;
             }
             
@@ -152,16 +152,16 @@ public class CommandManager {
             
             // Log
             if (sender != null && LunarCore.getConfig().getLogOptions().commands) {
-                LunarCore.getLogger().info("[UID: " + sender.getUid() + "] " + sender.getName() + " used command: " + message);
+                LunarCore.getLogger().info("[UID: " + sender.getUid() + "] " + sender.getName() + " 使用的命令: " + message);
             }
             
             // Run command
             handler.execute(cmdArgs);
         } else {
             if (sender != null) {
-                sender.sendMessage("Invalid Command!");
+                sender.sendMessage("无效的命令!");
             } else {
-                LunarCore.getLogger().info("Invalid Command!");
+                LunarCore.getLogger().info("无效的命令!");
             }
         }
     }
