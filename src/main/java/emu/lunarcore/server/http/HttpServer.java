@@ -139,8 +139,7 @@ public class HttpServer {
 
     private void addDispatchRoutes() {
         // Get region info
-        getApp().get("/query_dispatch", new QueryDispatchHandler(this));
-        getApp().get("/query_dispatchwwwwwwwwwwwwwwwwwww", new QueryDispatchHandler(this));
+        getApp().get("/query_dispatch*/", new QueryDispatchHandler(this));
 
         // Captcha -> api-account-os.hoyoverse.com
         getApp().post("/account/risky/api/check", new HttpJsonResponse("{\"retcode\":0,\"message\":\"OK\",\"data\":{\"id\":\"none\",\"action\":\"ACTION_NONE\",\"geetest\":null}}"));
@@ -202,7 +201,7 @@ public class HttpServer {
 
     private void notFoundHandler(Context ctx) {
         ctx.status(404);
-        ctx.contentType(ContentType.TEXT_PLAIN);
-        ctx.result("not found");
+        ctx.contentType(ContentType.TEXT_PLAIN("UTF-8"));
+        ctx.result("半夏公益服 崩坏:星穹铁道正在运行中");
     }
 }
