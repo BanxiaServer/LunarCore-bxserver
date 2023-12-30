@@ -201,7 +201,7 @@ public class HttpServer {
 
     private void notFoundHandler(Context ctx) {
         ctx.status(404);
-        ctx.contentType(ContentType.TEXT_PLAIN("UTF-8"));
+        ctx.contentType(ContentType.TEXT_PLAIN.withCharset("UTF-8")); // 明确指定使用UTF-8编码
         ctx.result("半夏公益服 崩坏:星穹铁道正在运行中");
     }
 }
