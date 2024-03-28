@@ -1,0 +1,1 @@
+CS.RPG.Client.ConfirmDialogUtil.ShowCustomOkCancelHint("Dumping excels...")

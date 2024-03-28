@@ -1267,4 +1267,5 @@ public class CmdId {
     public static final int AntiAddictScNotify = 91;
     public static final int StartAetherDivideChallengeBattleCsReq = 4877;
     public static final int TextJoinSaveCsReq = 3810;
+    public static final int ClientDownloadDataScNotify = 23;
 }
