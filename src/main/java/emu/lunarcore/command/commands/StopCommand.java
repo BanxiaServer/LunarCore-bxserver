@@ -1,4 +1,4 @@
-package emu.lunarcore.command.commands;
+/*package emu.lunarcore.command.commands;
 
 
 import emu.lunarcore.command.Command;
@@ -18,3 +18,4 @@ public class StopCommand implements CommandHandler {
         System.exit(1000);
     }
 }
+*/
